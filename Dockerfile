@@ -17,6 +17,8 @@ RUN cd /opt/oracle
 RUN unzip /opt/oracle/instantclient-basic-linux.x64-12.2.0.1.0.zip
 RUN unzip /opt/oracle/instantclient-odbc-linux.x64-12.2.0.1.0-2.zip
 RUN rm -f /opt/oracle/*.zip
+RUN ls -a /opt/oracle/
+RUN ls -a 
 RUN ln -s /opt/oracle/instantclient_12_2 /opt/oracle/instantclient
 RUN echo /opt/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf
 RUN ldconfig
