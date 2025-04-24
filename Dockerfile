@@ -21,6 +21,7 @@ RUN rm -f /opt/oracle/*.zip
 RUN ln -s /opt/oracle/instantclient_12_2/libclntsh.so.12.1 /opt/oracle/instantclient_12_2/libclntsh.so
 RUN ln -s /opt/oracle/instantclient_12_2/libocci.so.12.1 /opt/oracle/instantclient_12_2/libocci.so
 RUN ln -s /opt/oracle/instantclient_12_2 /opt/oracle/instantclient
+RUN ls -a /opt/oracle/instantclient
 RUN echo /opt/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf
 RUN ldconfig
 
