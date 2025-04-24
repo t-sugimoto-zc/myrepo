@@ -14,6 +14,7 @@ RUN apt-get install -y unzip
 COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle/
 COPY instantclient-odbc-linux.x64-12.2.0.1.0-2.zip /opt/oracle/
 RUN cd /opt/oracle
+RUN ls -a
 RUN unzip instantclient-basic-linux.x64-12.2.0.1.0.zip
 RUN unzip instantclient-odbc-linux.x64-12.2.0.1.0-2.zip
 RUN rm -f *.zip
