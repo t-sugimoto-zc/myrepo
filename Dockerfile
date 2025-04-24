@@ -27,4 +27,5 @@ RUN ldconfig
 
 # ODBCの設定
 RUN odbcinst -j
-RUN /opt/oracle/instantclient/odbc_update_ini.sh / /opt/oracle/instantclient "" ORCL /etc/odbc.ini
+RUN ls -a /etc
+RUN /opt/oracle/instantclient/odbc_update_ini.sh "/" "/opt/oracle/instantclient" "" "ORCL" "/etc/odbc.ini"
