@@ -34,3 +34,6 @@ RUN echo "Driver = /opt/oracle/instantclient/libsqora.so.12.1" >> /etc/odbcinst.
 RUN odbcinst -j
 RUN ls -a /etc
 RUN /opt/oracle/instantclient/odbc_update_ini.sh "/" "/opt/oracle/instantclient" "" "ORCL" "/etc/odbc.ini"
+
+RUN cat /etc/odbcinst.ini
+RUN cat /etc/odbc.ini
