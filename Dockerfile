@@ -26,9 +26,7 @@ RUN echo /opt/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf
 RUN ldconfig
 
 # odbcinst.iniファイルの作成
-RUN echo "[OracleODBC-12c]" > /etc/odbcinst.ini
-RUN echo "Description = Oracle ODBC driver for Oracle 12c" >> /etc/odbcinst.ini
-RUN echo "Driver = /opt/oracle/instantclient/libsqora.so.12.1" >> /etc/odbcinst.ini
+RUN touch /etc/odbcinst.ini
 
 # ODBCの設定
 RUN odbcinst -j
