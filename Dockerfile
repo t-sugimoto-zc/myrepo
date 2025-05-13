@@ -31,8 +31,7 @@ RUN mkdir -p /opt/oracle/instantclient/network/admin
 ENV TNS_ADMIN=/opt/oracle/instantclient/network/admin
 
 # iniファイルとoraファイルの作成
-COPY odbc.ini /etc/odbc.ini
-COPY odbcinst.ini /etc/odbcinst.ini
-COPY tnsnames.ora /opt/oracle/instantclient/network/admin/tnsnames.ora
-
+COPY odbc.ini /etc/
+COPY odbcinst.ini /etc/
+COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
 CMD ["sleep", "3600"]
