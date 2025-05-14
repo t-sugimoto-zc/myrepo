@@ -35,7 +35,6 @@ ENV HOME=/home/ubuntu
 
 ENV ODBCINI=/etc/odbc.ini
 ENV ODBCINSTINI=/etc/odbcinst.ini
-ENV LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
 
 # iniファイルとoraファイルの作成
 COPY odbc.ini /etc/
