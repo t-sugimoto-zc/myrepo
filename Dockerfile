@@ -33,7 +33,6 @@ ENV TNS_ADMIN=/opt/oracle/instantclient/network/admin
 # ユーザデータソース用ディレクトリの作成と環境変数の設定
 RUN mkdir -p /home/ubuntu
 ENV HOME=/home/ubuntu
-ENV ODBCINI=/etc/odbc.ini
 
 # iniファイルとoraファイルの作成
 COPY odbc.ini /etc/
