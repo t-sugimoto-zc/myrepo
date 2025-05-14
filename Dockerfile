@@ -43,5 +43,8 @@ COPY odbcinst.ini /etc/
 COPY .odbc.ini /home/ubuntu/
 COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
 
+# ドライバーの登録
+RUN odbcinst -i -d -f /etc/odbcinst.ini
+
 # コンテナを1時間起動させる
 CMD ["sleep", "3600"]
