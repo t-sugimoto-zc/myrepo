@@ -30,8 +30,14 @@ RUN ldconfig
 RUN mkdir -p /opt/oracle/instantclient/network/admin
 ENV TNS_ADMIN=/opt/oracle/instantclient/network/admin
 
+# ユーザデータソース用ディレクトリの作成と環境変数の設定
+RUN mkdir -p /home/ubuntu
+ENV HOME=/home/ubuntu
+ENV ODBCINI=/etc/odbc.ini
+
 # iniファイルとoraファイルの作成
 COPY odbc.ini /etc/
 COPY odbcinst.ini /etc/
+COPY .odbc.ini /home/ubuntu/
 COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
 CMD ["sleep", "3600"]
