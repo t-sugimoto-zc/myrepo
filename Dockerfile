@@ -38,9 +38,15 @@ ENV ODBCINSTINI=/etc/odbcinst.ini
 
 # iniファイルとoraファイルの作成
 COPY odbc.ini /etc/
-COPY odbcinst.ini /etc/
 COPY .odbc.ini /home/ubuntu/
 COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
+
+cat <<EOF > /etc/odbcinst.ini
+[OracleODBC-12c]
+Description=Oracle ODBC driver for Instant Client
+Driver=/opt/oracle/instantclient/libsqora.so.12.1
+UsageCount=1
+EOF
 
 # ドライバーの登録
 RUN odbcinst -i -d -f /etc/odbcinst.ini
