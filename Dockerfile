@@ -41,12 +41,11 @@ COPY odbc.ini /etc/
 COPY .odbc.ini /home/ubuntu/
 COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
 
-cat <<EOF > /etc/odbcinst.ini
-[OracleODBC-12c]
-Description=Oracle ODBC driver for Instant Client
-Driver=/opt/oracle/instantclient/libsqora.so.12.1
-UsageCount=1
-EOF
+# odbcinst.ini を直接作成（BOMや改行問題を回避）
+RUN echo "[OracleODBC-12c]" > /etc/odbcinst.ini && \
+    echo "Description=Oracle ODBC driver for Instant Client" >> /etc/odbcinst.ini && \
+    echo "Driver=/opt/oracle/instantclient/libsqora.so.12.1" >> /etc/odbcinst.ini && \
+    echo "UsageCount=1" >> /etc/odbcinst.ini
 
 # ドライバーの登録
 RUN odbcinst -i -d -f /etc/odbcinst.ini
