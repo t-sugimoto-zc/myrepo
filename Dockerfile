@@ -25,7 +25,6 @@ RUN ls -a /opt/oracle/instantclient
 RUN echo /opt/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf
 RUN ldconfig
 
-
 # TNS_ADMIN ディレクトリの作成と環境変数の設定
 RUN mkdir -p /opt/oracle/instantclient/network/admin
 ENV TNS_ADMIN=/opt/oracle/instantclient/network/admin
@@ -34,9 +33,15 @@ ENV TNS_ADMIN=/opt/oracle/instantclient/network/admin
 RUN mkdir -p /home/ubuntu
 ENV HOME=/home/ubuntu
 
+ENV ODBCINI=/etc/odbc.ini
+ENV ODBCINSTINI=/etc/odbcinst.ini
+ENV LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
+
 # iniファイルとoraファイルの作成
 COPY odbc.ini /etc/
 COPY odbcinst.ini /etc/
 COPY .odbc.ini /home/ubuntu/
 COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
+
+# コンテナを1時間起動させる
 CMD ["sleep", "3600"]
