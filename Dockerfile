@@ -39,18 +39,12 @@ ENV ODBCINSTINI=/etc/odbcinst.ini
 # iniファイルとoraファイルの作成
 COPY odbc.ini /etc/
 COPY .odbc.ini /home/ubuntu/
+COPY odbcinst.ini /etc/
 COPY tnsnames.ora /opt/oracle/instantclient/network/admin/
-
-# odbcinst.ini を直接作成（BOMや改行問題を回避）
-RUN cat <<EOF > /etc/odbcinst.ini
-[OracleODBC-12c]
-Description=Oracle ODBC driver for Instant Client
-Driver=/opt/oracle/instantclient/libsqora.so.12.1
-UsageCount=1
-EOF
 
 # ドライバーの登録
 RUN odbcinst -i -d -f /etc/odbcinst.ini
+RUN odbcinst -q -d
 
 # コンテナを1時間起動させる
 CMD ["sleep", "3600"]
